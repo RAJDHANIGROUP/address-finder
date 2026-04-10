@@ -1,42 +1,119 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Find Address</title>
-</head>
-<body style="text-align:center; font-family:Arial; margin-top:50px;">
-  
-  <h2>Enter 2 Digit Code</h2>
-  <input type="text" id="code" maxlength="2" placeholder="Enter Code">
-  <br><br>
-  <button onclick="findAddress()">Submit</button>
+  <title>Rajdhani Address Finder</title>
 
-  <h3 id="result"></h3>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff4b2b, #ff416c);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    .logo {
+      width: 200px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff416c;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff4b2b;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #222;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- 👇 LOGO (GitHub pe upload karna hoga) -->
+    <img src="logo.png" class="logo">
+
+    <h2>Enter Code</h2>
+
+    <input type="text" id="code" maxlength="2" placeholder="Enter Code">
+
+    <br>
+
+    <button onclick="findAddress()">Search</button>
+
+    <div id="result"></div>
+
+  </div>
 
 <script>
 function findAddress() {
-  var code = document.getElementById("code").value;
+  var code = document.getElementById("code").value.toUpperCase();
   var address = "";
 
   switch(code) {
     case "VD":
-      address = "Victoria Foods Pvt. Ltd. B-32, Lawrence Road Ind. Area, New Delhi-110035, INDIA Fssai Lico No-10012011000176";
+      address = "Victoria Foods Pvt. Ltd. B-32, Lawrence Road Ind. Area, New Delhi-110035, INDIA";
       break;
     case "VK":
-      address = "Victoria foods Port. Itd. Janti Road, Kundli, Dist. Sonipat, Haryana-131028 INDIA Essai LiG No. 10814020000004";
+      address = "Victoria Foods Pvt. Ltd. Janti Road, Kundli, Sonipat, Haryana-131028 INDIA";
       break;
     case "VJ":
-      address = " Victoria Foods Pvt. Ltd. E-7/2 MIDC, jalgaon, Maharashtra-425003, INDIA Fssai lice No-11519031000029";
+      address = "Victoria Foods Pvt. Ltd. MIDC, Jalgaon, Maharashtra-425003 INDIA";
       break;
     case "R1":
-      address = "Victoria Foods Pvt. Ltd 2251/52 Foods Park, Phase-2, Rai, Sonipat-131029 (HR) INDIA Fssai Lico. No. 10014064000464";
+      address = "Victoria Foods Pvt. Ltd. Foods Park Phase-2, Rai, Sonipat-131029 (HR)";
       break;
     case "R2":
-      address = "Victoria Foods Port. Ltd. 2258 Rou Foods Parle, Sonipat, Haryomama-131029 INDIA Fssai lice-10822020000163";
+      address = "Victoria Foods Pvt. Ltd. Foods Park, Sonipat-131029 INDIA";
+      break;
     case "RE":
-      address = "RAAR ENTERPRISES Plot No-1224, HS11DC Rai, Indl. Area Sonipat (Haryana)-131029 Fssailia No-10019064001917";
-      break;      
+      address = "RAAR ENTERPRISES HSIDC Rai Industrial Area, Sonipat (Haryana)-131029";
+      break;
     default:
-      address = "Invalid Code";
+      address = "❌ Invalid Code";
   }
 
   document.getElementById("result").innerHTML = address;
