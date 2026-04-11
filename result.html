@@ -6,10 +6,8 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial;
-      color: white;
-      text-align: center;
-      background: url('backgrou.png') no-repeat center center/cover;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('background.png') no-repeat center center/cover;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -17,16 +15,60 @@
     }
 
     .card {
-      background: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 12px;
-      width: 80%;
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 15px;
+      width: 90%;
       max-width: 500px;
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+      text-align: center;
     }
 
-    img {
-      width: 180px;
-      margin-bottom: 15px;
+    .logo {
+      width: 160px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 10px 0;
+      color: #333;
+    }
+
+    .address-box {
+      background: #f8f8f8;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 15px;
+      color: #222;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+
+    .map-btn {
+      background: #28a745;
+      color: white;
+    }
+
+    .copy-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    .back-btn {
+      background: #ff4b2b;
+      color: white;
+      margin-top: 10px;
     }
   </style>
 
@@ -36,15 +78,22 @@
 
 <div class="card">
 
-  <img src="logo.png">
+  <img src="logo.png" class="logo">
 
   <h2>Address Details</h2>
 
-  <p id="result"></p>
+  <div class="address-box" id="result"></div>
+
+  <button class="btn map-btn" onclick="openMap()">📍 Open in Google Maps</button>
+  <button class="btn copy-btn" onclick="copyAddress()">📋 Copy Address</button>
+
+  <br>
+  <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
 
 </div>
 
 <script>
+
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
@@ -52,28 +101,43 @@ let address = "";
 
 switch(code) {
   case "VD":
-    address = "Victoria Foods Pvt. Ltd. B-32, Lawrence Road Ind. Area, New Delhi-110035, INDIA Fssai Lic No-10012011000176";
+    address = "Victoria Foods Pvt. Ltd.\nB-32, Lawrence Road Industrial Area,\nNew Delhi - 110035, INDIA\nFSSAI Lic No: 10012011000176";
     break;
   case "VK":
-    address = "Victoria foods Port. Itd. Janti Road, Kundli, Dist. Sonipat, Haryana-131028 INDIA Fssai Lic No-10814020000004";
+    address = "Victoria Foods Pvt. Ltd.\nJanti Road, Kundli,\nSonipat, Haryana - 131028, INDIA\nFSSAI Lic No: 10814020000004";
     break;
   case "VJ":
-    address = "Victoria Foods Pvt. Ltd. MIDC, Jalgaon, Maharashtra-425003, INDIA Fssai Lic No-11519031000029";
+    address = "Victoria Foods Pvt. Ltd.\nE-7/2 MIDC,\nJalgaon, Maharashtra - 425003, INDIA\nFSSAI Lic No: 11519031000029";
     break;
   case "R1":
-    address = "Victoria Foods Pvt. Ltd 2251/52 Foods Park, Phase-2, Rai, Sonipat-131029 (HR) INDIA Fssai Lic No-10014064000464";
+    address = "Victoria Foods Pvt. Ltd.\n2251/52 Foods Park, Phase-2,\nRai, Sonipat - 131029 (HR), INDIA\nFSSAI Lic No: 10014064000464";
     break;
   case "R2":
-    address = "Victoria Foods Pvt. Ltd. Foods Park, Sonipat-131029 INDIA Fssai Lic No-10822020000163";
+    address = "Victoria Foods Pvt. Ltd.\nFoods Park, Sonipat - 131029, INDIA\nFSSAI Lic No: 10822020000163";
     break;
   case "RE":
-    address = "RAAR ENTERPRISES Plot No-1224, HSIDC Rai, Industrial Area Sonipat (Haryana)-131029 Fssai Lic No-10019064001917";
+    address = "RAAR ENTERPRISES\nPlot No-1224, HSIDC Rai Industrial Area,\nSonipat (Haryana) - 131029, INDIA\nFSSAI Lic No: 10019064001917";
     break;
   default:
     address = "❌ Invalid Code";
 }
 
 document.getElementById("result").innerText = address;
+
+function openMap() {
+  let mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address);
+  window.open(mapUrl, "_blank");
+}
+
+function copyAddress() {
+  navigator.clipboard.writeText(address);
+  alert("✅ Address Copied!");
+}
+
+function goBack() {
+  window.location.href = "index.html";
+}
+
 </script>
 
 </body>
