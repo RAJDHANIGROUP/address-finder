@@ -97,7 +97,7 @@
 
 <div class="card">
 
-  <img src="logo.png" class="logo">
+  <img src="logo.png" class="logo" id="companyLogo">
 
   <h2>ADDRESS DETAILS</h2>
 
@@ -156,6 +156,9 @@ let data = {
 };
 
 if(data[code]) {
+if(code === "IE" || code === "DF") {
+    document.getElementById("companyLogo").style.display = "none";
+}
   document.getElementById("codeBox").innerText = "Code: " + code;
   document.getElementById("addressBox").innerHTML = data[code].address;
   document.getElementById("licenseBox").innerText = data[code].license;
