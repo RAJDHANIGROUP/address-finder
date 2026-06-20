@@ -1,47 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rajdhani Code</title>
+  <title>Address Finder</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f5f5f5;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    .box {
-      text-align: center;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+    body{
+      font-family:'Segoe UI',sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      background:linear-gradient(
+      135deg,
+      #ff4b2b,
+      #ff416c,
+      #ff9f43
+      );
     }
 
-    img {
-      width: 200px;
-      margin-bottom: 15px;
+    .box{
+      position:relative;
+      text-align:center;
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      width:380px;
+      box-shadow:0 10px 35px rgba(0,0,0,.25);
     }
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      width: 150px;
-      text-align: center;
+    .animated-title{
+      font-size:40px;
+      font-weight:800;
+      margin-bottom:25px;
+
+      background:linear-gradient(
+      90deg,
+      #ff0000,
+      #ff9900,
+      #ff0000
+      );
+
+      background-size:300% 300%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      animation:shine 4s infinite;
     }
 
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      background: red;
-      color: white;
-      border: none;
-      cursor: pointer;
+    @keyframes shine{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+
     }
+
+    .creator{
+      position:absolute;
+      top:12px;
+      right:15px;
+      font-size:11px;
+      color:#777;
+      text-align:right;
+      line-height:1.2;
+    }
+
+    .creator span{
+      color:#ff3c2b;
+      font-weight:bold;
+      display:block;
+    }
+
+    h3{
+      color:#333;
+      margin-bottom:15px;
+    }
+
+    input{
+      width:220px;
+      padding:12px;
+      border:2px solid #ddd;
+      border-radius:10px;
+      text-align:center;
+      font-size:16px;
+      outline:none;
+    }
+
+    input:focus{
+      border-color:#ff416c;
+    }
+
+    button{
+      margin-top:15px;
+      padding:12px 25px;
+      border:none;
+      border-radius:10px;
+      background:#ff3c2b;
+      color:white;
+      font-size:15px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    button:hover{
+      transform:translateY(-2px);
+      background:#e62e1b;
+    }
+
+    .footer{
+      margin-top:18px;
+      color:#888;
+      font-size:12px;
+    }
+
   </style>
 
 </head>
@@ -49,25 +135,51 @@
 <body>
 
 <div class="box">
-  <h1 class="animated-title">ADDRESS FINDER</h1>
 
-<div class="creator">
-    Created By
-    <span>BABA ZONE AI</span>
-</div>
+  <div class="creator">
+      Created By
+      <span>BABA ZONE AI</span>
+  </div>
+
+  <h1 class="animated-title">
+      ADDRESS FINDER
+  </h1>
 
   <h3>Enter Code</h3>
 
-  <input type="text" id="code" maxlength="2">
+  <input
+      type="text"
+      id="code"
+      maxlength="2"
+      placeholder="Enter Code">
+
   <br>
-  <button onclick="goNext()">Submit</button>
+
+  <button onclick="goNext()">
+      Search Address
+  </button>
+
+  <div class="footer">
+      Enter your code to view address details
+  </div>
+
 </div>
 
 <script>
+
 function goNext(){
-  var code = document.getElementById("code").value.toUpperCase();
-  window.location.href = "result.html?code=" + code;
+
+    var code =
+    document
+    .getElementById("code")
+    .value
+    .toUpperCase();
+
+    window.location.href =
+    "result.html?code=" + code;
+
 }
+
 </script>
 
 </body>
