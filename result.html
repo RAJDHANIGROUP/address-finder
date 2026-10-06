@@ -1,186 +1,670 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Address Details</title>
 
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('background.png') no-repeat center center/cover;
-      height: 100vh;
+      min-height: 100vh;
+
+      font-family: "Segoe UI", Arial, sans-serif;
+
+      background:
+        linear-gradient(
+          rgba(255,255,255,0.15),
+          rgba(255,255,255,0.15)
+        ),
+        url("background.png") center center / cover no-repeat fixed;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
+      padding: 20px;
     }
+
+    /* MAIN CARD */
 
     .card {
+
+      width: 100%;
+      max-width: 520px;
+
       background: rgba(255,255,255,0.96);
-      padding: 22px;
-      border-radius: 18px;
-      width: 90%;
-      max-width: 460px;
+
+      border-radius: 22px;
+
+      padding: 28px 25px 25px;
+
       text-align: center;
-      box-shadow: 0px 10px 35px rgba(0,0,0,0.3);
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,0.30);
+
+      backdrop-filter: blur(8px);
+
+      animation: cardIn 0.6s ease;
     }
 
-    .logo {
-      width: 150px;
-      margin-bottom: 6px;
+    @keyframes cardIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
     }
+
+
+    /* RAJDHANI LOGO */
+
+    .company-logo {
+
+      width: 155px;
+      max-width: 65%;
+
+      height: auto;
+
+      margin: 0 auto 10px;
+
+      display: block;
+
+      animation: logoIn 0.7s ease;
+    }
+
+    @keyframes logoIn {
+
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* TITLE */
 
     h2 {
+
+      margin: 5px 0 10px;
+
+      font-size: 21px;
+
       color: #b30000;
-      margin: 4px 0 8px;
+
       letter-spacing: 1px;
-      font-size: 18px;
+
+      font-weight: 800;
     }
+
+
+    /* CODE */
 
     .code-box {
+
       display: inline-block;
-      background: #ff3c2b;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff3c2b,
+          #ff416c
+        );
+
       color: white;
-      padding: 5px 16px;
-      border-radius: 6px;
-      font-weight: bold;
-      margin-bottom: 8px;
-      font-size: 14px;
+
+      padding: 6px 18px;
+
+      border-radius: 20px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      margin-bottom: 13px;
+
+      box-shadow:
+        0 4px 12px rgba(255,60,43,0.25);
     }
+
+
+    /* ADDRESS */
 
     .address-box {
-      font-size: 15px;
-      line-height: 1.5;
+
+      font-size: 16px;
+
+      line-height: 1.55;
+
       color: #222;
+
       text-align: center;
-      margin: 2px 0;
+
+      margin: 0 auto;
+
+      max-width: 460px;
+
+      font-weight: 500;
     }
 
-    /* 🔥 FSSAI section ultra tight */
-    .fssai-logo {
-      width: 90px;
-      margin-top: 2px;
-      margin-bottom: 0px;
+    .address-box br {
+      line-height: 1.4;
     }
+
+
+    /* FSSAI */
+
+    .fssai-section {
+
+      margin-top: 8px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+    }
+
+    .fssai-logo {
+
+      width: 82px;
+
+      height: auto;
+
+      display: block;
+
+      margin: 0 auto 2px;
+    }
+
+
+    /* LICENSE */
 
     .license {
-      font-weight: bold;
-      color: #b30000;
-      margin-top: 2px;
+
+      margin-top: 0;
+
       font-size: 14px;
+
+      font-weight: 700;
+
+      color: #b30000;
+
+      line-height: 1.3;
     }
 
-    .btn {
-      margin-top: 14px;
-      padding: 9px 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 13px;
-    }
 
-    .map-btn {
-      background: #1e7e34;
-      color: white;
-    }
+    /* BACK BUTTON */
 
     .back-btn {
-      background: #ff3c2b;
+
+      margin-top: 17px;
+
+      padding: 10px 24px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff3c2b,
+          #ff416c
+        );
+
       color: white;
-      margin-left: 6px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 5px 14px rgba(255,60,43,0.25);
+
+      transition: 0.25s;
+    }
+
+    .back-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 18px rgba(255,60,43,0.35);
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      body {
+
+        padding: 12px;
+
+        background-attachment: scroll;
+
+      }
+
+      .card {
+
+        max-width: 100%;
+
+        padding: 22px 17px 20px;
+
+        border-radius: 18px;
+      }
+
+      .company-logo {
+
+        width: 135px;
+
+        margin-bottom: 7px;
+      }
+
+      h2 {
+
+        font-size: 19px;
+
+        margin-bottom: 8px;
+      }
+
+      .code-box {
+
+        font-size: 12px;
+
+        padding: 5px 15px;
+
+        margin-bottom: 11px;
+      }
+
+      .address-box {
+
+        font-size: 15px;
+
+        line-height: 1.5;
+
+        padding: 0 3px;
+      }
+
+      .fssai-section {
+
+        margin-top: 6px;
+      }
+
+      .fssai-logo {
+
+        width: 72px;
+
+        margin-bottom: 1px;
+      }
+
+      .license {
+
+        font-size: 13px;
+      }
+
+      .back-btn {
+
+        margin-top: 14px;
+
+        padding: 9px 22px;
+
+        font-size: 13px;
+      }
+
+    }
+
+
+    /* VERY SMALL PHONES */
+
+    @media (max-width: 380px) {
+
+      .card {
+
+        padding: 20px 14px 18px;
+      }
+
+      .company-logo {
+
+        width: 120px;
+      }
+
+      h2 {
+
+        font-size: 18px;
+      }
+
+      .address-box {
+
+        font-size: 14px;
+
+        line-height: 1.45;
+      }
+
     }
 
   </style>
 
 </head>
 
+
 <body>
+
 
 <div class="card">
 
-  <img src="logo.png" class="logo" id="companyLogo">
+
+  <!-- RAJDHANI LOGO -->
+  <img
+    src="logo.png"
+    class="company-logo"
+    id="companyLogo"
+    alt="Company Logo"
+  >
+
 
   <h2>ADDRESS DETAILS</h2>
 
-  <div class="code-box" id="codeBox"></div>
 
-  <div class="address-box" id="addressBox"></div>
+  <div
+    class="code-box"
+    id="codeBox">
+  </div>
+
+
+  <!-- ADDRESS -->
+  <div
+    class="address-box"
+    id="addressBox">
+  </div>
+
 
   <!-- FSSAI -->
-  <img src="fssai.png" class="fssai-logo">
-  <div class="license" id="licenseBox"></div>
+  <div class="fssai-section">
 
-  <button class="btn map-btn" onclick="openMap()">📍 Open in Google Maps</button>
-  <button class="btn back-btn" onclick="goBack()">⬅ Back</button>
+    <img
+      src="fssai.png"
+      class="fssai-logo"
+      alt="FSSAI"
+    >
+
+    <div
+      class="license"
+      id="licenseBox">
+    </div>
+
+  </div>
+
+
+  <!-- BACK -->
+  <button
+    class="back-btn"
+    onclick="goBack()">
+    ← Back
+  </button>
+
 
 </div>
 
+
 <script>
 
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code");
 
-let data = {
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const code =
+  (params.get("code") || "")
+  .toUpperCase()
+  .trim();
+
+
+/*
+=================================================
+ADDRESS DATABASE
+=================================================
+
+showLogo: true  = Rajdhani logo dikhega
+showLogo: false = Rajdhani logo nahi dikhega
+
+Aap future me kisi bhi code ka logo
+sirf true / false karke control kar sakte ho.
+*/
+
+
+const data = {
+
+
   "VD": {
-    address: "Victoria Foods Pvt. Ltd.<br>B-32, Lawrence Road Industrial Area,<br>New Delhi - 110035, INDIA",
-    license: "Lic No: 10012011000176"
-  },
-  "VK": {
-    address: "Victoria Foods Pvt. Ltd.<br>Janti Road, Kundli,<br>Sonipat, Haryana - 131028, INDIA",
-    license: "Lic No: 10814020000004"
-  },
-  "VJ": {
-    address: "Victoria Foods Pvt. Ltd.<br>E-7/2 MIDC, Jalgaon,<br>Maharashtra - 425003, INDIA",
-    license: "Lic No: 11519031000029"
-  },
-  "R1": {
-    address: "Victoria Foods Pvt. Ltd.<br>Plot No. 2251/52 Rai Food Park, Phase-II,<br>Rai,Sonipat (Haryana) - 131029, INDIA",
-    license: "Lic No: 10014064000464"
-  },
-  "R2": {
-    address: "Victoria Foods Pvt. Ltd.<br>Plot No.  2258 , Phase -II, Mega Food Park Rai,<br>Sonipat (Haryana) - 131029, INDIA",
-    license: "Lic No: 10822020000163"
-  },
-  "RE": {
-    address: "RAAR ENTERPRISES<br>Plot No. 1224, HSIIDC Rai. Indl. Area,<br>Sonipat (Haryana) - 131029, INDIA",
-    license: "Lic No: 10019064001917"
-  },
-  "IE": {
-  address: "INFINITY ENVIROTECH<br>Ground Floor, Plot in Kh No.376, Khata No.428,<br>Jatheri, Rai, Sonipat, Haryana - 131029, INDIA",
-  license: "Lic. No. 10825020000288"
-},
-   "KK": {
-  address: "EPIP KARTHOLI SIDCO INDUSTRIAL COMPLEX, BARI BRAHMANA, Samba,<br>Jammu & Kashmir - 181133, INDIA",
-  license: "Lic. No. 11023370000037"
-},
 
-"DF": {
-  address: "D D AGRO FOODS PVT LTD<br>1064/4, GOBINDPURA, MANIMAJRA,<br>Chandigarh - 151102, INDIA",
-  license: "Lic. No. 12115801000021"
-}
+    showLogo: true,
+
+    address:
+      "Victoria Foods Pvt. Ltd.<br>" +
+      "B-32, Lawrence Road Industrial Area,<br>" +
+      "New Delhi - 110035, INDIA",
+
+    license:
+      "FSSAI Lic No: 10012011000176"
+
+  },
+
+
+  "VK": {
+
+    showLogo: true,
+
+    address:
+      "Victoria Foods Pvt. Ltd.<br>" +
+      "Janti Road, Kundli,<br>" +
+      "Sonipat, Haryana - 131028, INDIA",
+
+    license:
+      "FSSAI Lic No: 10814020000004"
+
+  },
+
+
+  "VJ": {
+
+    showLogo: true,
+
+    address:
+      "Victoria Foods Pvt. Ltd.<br>" +
+      "E-7/2 MIDC,<br>" +
+      "Jalgaon, Maharashtra - 425003, INDIA",
+
+    license:
+      "FSSAI Lic No: 11519031000029"
+
+  },
+
+
+  "R1": {
+
+    showLogo: true,
+
+    address:
+      "Victoria Foods Pvt. Ltd.<br>" +
+      "Plot No. 2251/52 Rai Food Park, Phase-II,<br>" +
+      "Rai, Sonipat - 131029 (HR), INDIA",
+
+    license:
+      "FSSAI Lic No: 10014064000464"
+
+  },
+
+
+  "R2": {
+
+    showLogo: true,
+
+    address:
+      "Victoria Foods Pvt. Ltd.<br>" +
+      "Plot No.  2258 , Phase -II, Mega Food Park Rai,<br>" +
+      "Sonipat, Haryana - 131029, INDIA",
+
+    license:
+      "FSSAI Lic No: 10822020000163"
+
+  },
+
+
+  "RE": {
+
+    showLogo: false,
+
+    address:
+      "RAAR ENTERPRISES<br>" +
+      "Plot No-1224, HSIIDC Rai Industrial Area,<br>" +
+      "Sonipat (Haryana) - 131029, INDIA",
+
+    license:
+      "FSSAI Lic No: 10019064001917"
+
+  },
+
+
+  /* ==============================
+     INFINITY ENVIROTECH
+     RAJDHANI LOGO OFF
+     ============================== */
+
+  "IE": {
+
+    showLogo: false,
+
+    address:
+      "INFINITY ENVIROTECH<br>" +
+      "Ground Floor, Plot in Kh-No.376, Khata No.428,<br>" +
+      "Jatheri, Rai, Sonipat, Haryana - 131029, Sonipat",
+
+    license:
+      "Lic. No. 10825020000288"
+
+  },
+
+
+  /* ==============================
+     D D AGRO FOODS
+     RAJDHANI LOGO OFF
+     ============================== */
+
+  "DF": {
+
+    showLogo: false,
+
+    address:
+      "D D AGRO FOODS PVT LTD<br>" +
+      "1064/4, GOBINDPURA, MANIMAJRA,<br>" +
+      "CHANDIGARH - 151102",
+
+    license:
+      "Lic. No. 12115801000021"
+
+  }
+
 };
 
-if(data[code]) {
-if(code === "IE" || code === "DF") {
-    document.getElementById("companyLogo").style.display = "none";
-}
-  document.getElementById("codeBox").innerText = "Code: " + code;
-  document.getElementById("addressBox").innerHTML = data[code].address;
-  document.getElementById("licenseBox").innerText = data[code].license;
-  window.currentAddress = data[code].address.replace(/<br>/g, " ");
+
+/* =========================================
+   DISPLAY DATA
+   ========================================= */
+
+
+const logo =
+  document.getElementById("companyLogo");
+
+
+if (data[code]) {
+
+
+  /* Logo ON / OFF */
+
+  if (data[code].showLogo === true) {
+
+    logo.style.display = "block";
+
+  } else {
+
+    logo.style.display = "none";
+
+  }
+
+
+  document.getElementById("codeBox")
+    .innerText =
+    "Code: " + code;
+
+
+  document.getElementById("addressBox")
+    .innerHTML =
+    data[code].address;
+
+
+  document.getElementById("licenseBox")
+    .innerText =
+    data[code].license;
+
+
 } else {
-  document.getElementById("addressBox").innerText = "❌ Invalid Code";
+
+
+  logo.style.display = "none";
+
+
+  document.getElementById("codeBox")
+    .innerText =
+    "Invalid Code";
+
+
+  document.getElementById("addressBox")
+    .innerHTML =
+    "❌ Address not found";
+
+
+  document.getElementById("licenseBox")
+    .innerText = "";
+
 }
 
-function openMap() {
-  let mapUrl = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(window.currentAddress);
-  window.open(mapUrl, "_blank");
-}
+
+/* BACK BUTTON */
 
 function goBack() {
-  window.location.href = "index.html";
+
+  window.location.href =
+    "index.html";
+
 }
 
+
 </script>
+
 
 </body>
 </html>
